@@ -1,5 +1,7 @@
 # genD
 
+genD is a tool used for generate rows with special requirement about the column's null values and distinct limitation.
+
 ```
 ./genD --P="4329" --colNum=2 --typeBits=0 --rows="200000 200000" --nullP="1 1 1 1" --distinctP="100 100 100 100"
 ```

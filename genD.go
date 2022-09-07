@@ -70,14 +70,16 @@ func Run(db *sql.DB) {
 	LeftNACols := make([]*naColumn, 0, *colNum)
 	rightNACols := make([]*naColumn, 0, *colNum)
 	// analyze the type bits.
-	typeBits := make([]bool, 0, *colNum)
+	typeBits := make([]bool, *colNum)
+	pos := 0
 	for *colTypes != 0 {
 		v := *colTypes & mask
 		if v != 0 {
-			typeBits = append(typeBits, true)
+			typeBits[pos] = true
 		} else {
-			typeBits = append(typeBits, false)
+			typeBits[pos] = false
 		}
+		pos++
 		*colTypes = *colTypes >> 1
 	}
 	// analyze the nulls
@@ -132,7 +134,7 @@ func Run(db *sql.DB) {
 	leftRowsInts := rowsInts[0]
 	rightRowsInts := rowsInts[1]
 	// construct na-column
-	for i := *colNum - 1; i >= 0; i-- {
+	for i := 0; i < *colNum; i++ {
 		tp := int64Tp
 		if typeBits[i] {
 			// varchar

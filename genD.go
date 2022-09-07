@@ -50,7 +50,7 @@ const (
 )
 
 func Conn() (*sql.DB, error) {
-	res := "root:@tcp(127.0.0.1:%s)/test?charset=utf8&parseTime=True"
+	res := "root:@tcp(127.0.0.1:%s)/test2?charset=utf8&parseTime=True"
 	db, err := sql.Open("mysql", fmt.Sprintf(res, *Port))
 	if err != nil {
 		return nil, err

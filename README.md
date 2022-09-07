@@ -1,6 +1,8 @@
 # genD
 
-genD is a tool used for generate rows with special requirement about the column's null values and distinct limitation.
+genD is a tool used for generating rows with special requirement about the column's null values and distinct limitation. you should build your table with DDL before running genD.
+
+genD receive your column type(only int and varchar row) and null value percentage and distinct percentage as parameters.
 
 ```
 ./genD --P="4329" --colNum=2 --typeBits=0 --rows="200000 200000" --nullP="1 1 1 1" --distinctP="100 100 100 100"

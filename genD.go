@@ -155,8 +155,8 @@ func Run(db *sql.DB) {
 	for i, _ := range rightNACols {
 		rightNAData = append(rightNAData, rightNACols[i].genData())
 	}
-	lSql := "insert into t1 values("
-	rSql := "insert into t2 values("
+	lSql := "insert into t1(a,b) values("
+	rSql := "insert into t2(a,b) values("
 	for i := range LeftNACols {
 		if i == 0 {
 			lSql += "%s"
